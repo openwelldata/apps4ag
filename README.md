@@ -1,67 +1,37 @@
-# Getting started with Docker Compose and Nodejs
+# Express app with nodemon development server
 
-**Heads up: Version 2.0 is coming! Read about its development here**
+Use [nodemon's](https://github.com/remy/nodemon) legacy mode to monitor file changes in your container. The app will restart, if you change any **.js**, **.json** or **.hjs** file.
 
-https://medium.com/@b00giZm/building-the-next-version-of-compose-node-86eef3c23d5b
+## Prerequisites
 
-## Motivation
+Install [Docker](https://www.docker.com/) on your system.
 
-[Docker Compose](http://docs.docker.com/compose/) is an awesome tool for creating isolated development environments with [Docker](http://docker.com) by using simple configurations with [YAML](http://www.yaml.org/). It's clean and easy enough to wrap your head around, even if you are new to Docker. Even though, the official website is lacking some practial, real world examples for getting started with Docker Compose and Nodejs.
+* [Install instructions](https://docs.docker.com/installation/mac/) for Mac OS X
+* [Install instructions](https://docs.docker.com/installation/ubuntulinux/) for Ubuntu Linux
+* [Install instructions](https://docs.docker.com/installation/) for other platforms
 
-If you're like me, you are using a development server like [nodemon](https://github.com/remy/nodemon) that watches all your file changes and restarts your app accordingly. Bringing this workflow over to Docker Compose (née Fig) is a bit tricky. You can find many Github repositories that aim to show you how to do it, but not one (at least of the ones I found) of them are not suitable for "real world" development. Most of them even require you to rebuild your Dockerfile to reflect file changes - _seriously?!_
+Install [Docker Compose](http://docs.docker.com/compose/) on your system.
 
-I hope the following real world examples will save you from some headache (like I had) while trying to figure out how to (pragmatically) use Docker Compose for your Nodejs apps.
+* Python/pip: `sudo pip install -U docker-compose`
+* Other: ``curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose; chmod +x /usr/local/bin/docker-compose``
 
-## Examples
+## Setup
 
-### Basic skeleton with Express app generator
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/00-basic-express-generator](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/00-basic-express-generator)
+Run `docker-compose build`. It will
 
-### Express app with nodemon development server
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/01-express-nodemon](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/01-express-nodemon)
+* install [nodemon](https://github.com/remy/nodemon) globally in your container
+* install all dependencies from the package.json locally
+* expose port 3000 to the host
+* instruct the container to execute `npm start` on start up.
 
-### Express app with Redis and nodemon development server
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/02-express-redis-nodemon](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/02-express-redis-nodemon)
+## Start
 
-### Express app with Gulp.js build system
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/03-express-gulp-watch](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/03-express-gulp-watch)
+Run `docker-compose up` to create and start the container. The app should then be running on your docker daemon on port 3030 (On OS X you can use `boot2docker ip` to find out the IP address).
 
-### Express app with Grunt.js build system
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/04-express-grunt-watch](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/04-express-grunt-watch)
+## Notes on boot2docker
 
-### Nginx, Express, Redis and nodemon
-[https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/05-nginx-express-redis-nodemon](https://github.com/b00giZm/docker-compose-nodejs-examples/tree/master/05-nginx-express-redis-nodemon)
+It [appears](https://github.com/boot2docker/boot2docker/issues/290) that boot2docker (OS X, Windows) currently does not automatically sync the system clock with the host system after a host resumes from sleep. This becomes a problem due to the way nodemon detects file changes. That might cause it to go bananas, if the clocks on both systems are "too much" out of sync. Until this is fixed, you might use [this workaround](https://github.com/boot2docker/boot2docker/issues/290#issuecomment-62384209) or simply do a manual sync via
 
-More to come...
-
-## Maintainer
-
-Pascal Cremer
-
-* Email: <hello@codenugget.co>
-* Twitter: [@b00gizm](https://twitter.com/b00gizm)
-* Web: [http://codenugget.co](http://codenugget.co)
-
-## License
-
-> The MIT License (MIT)
->
-> Copyright (c) 2014-2017 Pascal Cremer
->
->Permission is hereby granted, free of charge, to any person obtaining a copy
->of this software and associated documentation files (the "Software"), to deal
->in the Software without restriction, including without limitation the rights
->to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
->copies of the Software, and to permit persons to whom the Software is
->furnished to do so, subject to the following conditions:
->
->The above copyright notice and this permission notice shall be included in all
->copies or substantial portions of the Software.
->
->THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
->IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
->FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
->AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
->LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
->OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
->SOFTWARE.
+```bash
+/usr/local/bin/boot2docker ssh sudo ntpclient -s -h pool.ntp.org
+```
