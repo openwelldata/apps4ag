@@ -1,0 +1,32 @@
+node:
+  build: .
+  volumes:
+    - "./app:/src/app"
+  ports:
+    - "8080:3000"
+
+# version: '2.0'
+# services:
+#   node:
+#     build:
+#       context: ./node
+#       dockerfile: Dockerfile
+#     volumes:
+#       - "./app:/src/app"
+#     ports:
+#       - "8080:3000"
+
+#   # couchdb:
+#   #   build:
+#   #     context: ./couchdb
+#   #     dockerfile: Dockerfile
+#   #   image: "couchdb:1.6.1" 
+#   #   hostname: couchdb.server
+#   #   environment:
+#   #     COUCHDB_USER: admin
+#   #     COUCHDB_PASSWORD: password
+#   #   volumes:
+#   #     - ./etc:/usr/local/etc/couchdb/local.d
+#   #     - ./lib:/usr/local/var/lib/couchdb
+#   #   ports:
+#   #     - "5984:5984"
