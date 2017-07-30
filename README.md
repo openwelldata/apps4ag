@@ -37,16 +37,31 @@ For remote couchdb server see [here](http://docs.couchdb.org/en/2.0.0/config/htt
 Nano is the official wrapper library to make calls to couchdb from nodejs
 https://www.npmjs.com/package/nano
 
-## CURL Commands
+CRUD Operations with nano
+https://tanzimsaqib.wordpress.com/2015/05/25/crud-with-couchdb-in-node-js/
+
+## cURL Commands
 
 Login using the default credentials
-```curl http://admin:password@localhost:5984```
+```curl http://admin:password@localhost:5984
+```
 Create a new db
-```curl -X PUT http://youradminuser:youradminpassword@localhost:5984/testdb```
+```curl -X PUT http://youradminuser:youradminpassword@localhost:5984/testdb
+```
 
 ## Futon
 
 Futon is the official control panel for CouchDB. It can be accessed by appending `_utils` to the url.
 
 http://localhost:5984/_utils
+
+Official Documentation
+http://docs.couchdb.org/en/1.6.1/intro/futon.html
+
+Getting Started Guide
+https://www.tutorialspoint.com/couchdb/couchdb_creating_a_document.htm
+
+
+Setting up CouchDB and Futon
+https://www.digitalocean.com/community/tutorials/how-to-install-couchdb-and-futon-on-ubuntu-14-04
 
