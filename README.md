@@ -28,10 +28,25 @@ Run `docker-compose build`. It will
 
 Run `docker-compose up` to create and start the container. The app should then be running on your docker daemon on port 3030 (On OS X you can use `boot2docker ip` to find out the IP address).
 
-## Notes on boot2docker
+## CouchDB
 
-It [appears](https://github.com/boot2docker/boot2docker/issues/290) that boot2docker (OS X, Windows) currently does not automatically sync the system clock with the host system after a host resumes from sleep. This becomes a problem due to the way nodemon detects file changes. That might cause it to go bananas, if the clocks on both systems are "too much" out of sync. Until this is fixed, you might use [this workaround](https://github.com/boot2docker/boot2docker/issues/290#issuecomment-62384209) or simply do a manual sync via
+For remote couchdb server see [here](http://docs.couchdb.org/en/2.0.0/config/http.html)
 
-```bash
-/usr/local/bin/boot2docker ssh sudo ntpclient -s -h pool.ntp.org
-```
+## Nano
+
+Nano is the official wrapper library to make calls to couchdb from nodejs
+https://www.npmjs.com/package/nano
+
+## CURL Commands
+
+Login using the default credentials
+```curl http://admin:password@localhost:5984```
+Create a new db
+```curl -X PUT http://youradminuser:youradminpassword@localhost:5984/testdb```
+
+## Futon
+
+Futon is the official control panel for CouchDB. It can be accessed by appending `_utils` to the url.
+
+http://localhost:5984/_utils
+
