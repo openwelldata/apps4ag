@@ -10,12 +10,16 @@ services:
       - "8080:3000" 
   
   couchdb:
+    image: couchdb:1.6.1
     build:
       context: ./couchdb
       dockerfile: Dockerfile
-    image: couchdb:1.6.1
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=password
     # volumes:
     #   - .couchdb/etc:/usr/local/etc/couchdb/local.d
     #   - .couchdb/lib:/usr/local/var/lib/couchdb
     ports:
       - "5984:5984"
+      
