@@ -9,13 +9,13 @@ services:
     ports:
       - "8080:3000" 
   
-  # couchdb:
-  #   build:
-  #     context: ./couchdb
-  #     dockerfile: Dockerfile
-  #   image: couchdb:1.6.1
-  #   volumes:
-  #     - ./etc:/usr/local/etc/couchdb/local.d
-  #     - ./lib:/usr/local/var/lib/couchdb
-  #   ports:
-  #     - "5984:5984"
+  couchdb:
+    build:
+      context: ./couchdb
+      dockerfile: Dockerfile
+    image: couchdb:1.6.1
+    # volumes:
+    #   - .couchdb/etc:/usr/local/etc/couchdb/local.d
+    #   - .couchdb/lib:/usr/local/var/lib/couchdb
+    ports:
+      - "5984:5984"
