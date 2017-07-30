@@ -1,4 +1,4 @@
-# Express app with nodemon development server
+# Open water data collection app prototype
 
 Use [nodemon's](https://github.com/remy/nodemon) legacy mode to monitor file changes in your container. The app will restart, if you change any **.js**, **.json** or **.hjs** file.
 
