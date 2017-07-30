@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+   integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+   integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+   crossorigin=""></script>
+  </head>
+  <body>
+    <div id="mapid" style="width:100%; height:875px;"></div>
+  </body>
+  <script>
+  var mymap = L.map('mapid').setView([38.400, -121.514], 10);
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiY2pzaW1vbiIsImEiOiJjajVyNTYwMW0wc3Z3MndvMHdwa3hjYXppIn0.rsUllKdY9xZEOi0MwRipmg'
+  }).addTo(mymap);
+  var markers = [
+    L.marker([38.412, -121.209]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>18040013"),
+    L.marker([38.240, -121.511]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>18020109"),
+    L.marker([38.569, -121.309]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>18020111"),
+    L.marker([38.703, -121.388]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>180201"),
+    L.marker([38.521, -121.964]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>18020109"),
+    L.marker([38.521, -121.964]).addTo(mymap).bindPopup("<b>Hydrologic Unit Code:</b><br>18020109").openPopup(),    
+    
+  ];
+
+  var circles = [
+    L.circle([38.412, -121.209], {
+      color: 'red',
+      fillColor: '#dc143c',
+      fillOpacity: 0.5,
+      radius: 1000
+    }).addTo(mymap),
+    L.circle([38.240, -121.511], {
+      color: 'red',
+      fillColor: '#dc143c',
+      fillOpacity: 0.5,
+      radius: 1500
+    }).addTo(mymap),
+    L.circle([38.569, -121.309], {
+      color: 'blue',
+      fillColor: '#0197ca',
+      fillOpacity: 0.5,
+      radius: 1000
+    }).addTo(mymap),
+    L.circle([38.703, -121.388], {
+      color: 'red',
+      fillColor: '#dc143c',
+      fillOpacity: 0.5,
+      radius: 800
+    }).addTo(mymap),
+    L.circle([38.521, -121.964], {
+      color: 'red',
+      fillColor: '#dc143c',
+      fillOpacity: 0.5,
+      radius: 1200
+    }).addTo(mymap),
+  ]
+  </script>
+</html>
