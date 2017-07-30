@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<title>{{title}}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel='stylesheet' href='/styles/form.css'/>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Open Well<b></b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="/data" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+    <a href="/form" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Well Form</a>    
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-green w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Open Well</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+  
+  <!-- Well Form -->
+  <div class="w3-container" id="wellform" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-green"><b>Open Well</b></h1>
+    <hr style="width:50px;border:5px solid green" class="w3-round">
+    <p>Please fill out all the details in the Well Form!</p>
+    <form action="/form" method="post">
+      <div class="w3-section">
+        <label>Depth (Meters)</label>
+        <input class="w3-input w3-border" type="text" value="1000" name="Depth">
+      </div>
+      <div class="w3-section">
+        <label>Diameter (Meter)</label>
+        <input class="w3-input w3-border" type="text" value="20" name="Diameter">
+      </div>
+      <div class="w3-section">
+        <label>Location (Longitude, Latitude)</label>
+        <input class="w3-input w3-border" type="text" value="38.412, -121.209" name="Location">
+      </div>
+      <div class="w3-section">
+        <label>pH</label>
+        <input class="w3-input w3-border" type="text" value="7.1" name="pH">
+      </div>
+      <div class="w3-section">
+        <label>Salinity (ppm)</label>
+        <input class="w3-input w3-border" type="text" value=30 name="Salinity">
+      </div>
+      <div class="w3-section">
+        <label>Arcenic (mg/L)</label>
+        <input class="w3-input w3-border" type="text" value=0.010 name="Arcenic">
+      </div>
+      <div class="w3-section">
+        <label>Lead (bpm)</label>
+        <input class="w3-input w3-border" type="text" name="Lead">
+      </div>
+      <div class="w3-section">
+        <label>Pesticides</label>
+        <input class="w3-input w3-border" type="text" name="Pesticides">
+      </div>
+      <div class="w3-section">
+        <label>Clorine</label>
+        <input class="w3-input w3-border" type="text" name="Clorine">
+      </div>
+      <div class="w3-section">
+        <label>Nitrite</label>
+        <input class="w3-input w3-border" type="text" name="Nitrite">
+      </div>
+      <div class="w3-section">
+        <label>Iron</label>
+        <input class="w3-input w3-border" type="text" name="Iron">
+      </div>
+      <div class="w3-section">
+        <label>Copper</label>
+        <input class="w3-input w3-border" type="text" name="Copper">
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-green w3-margin-bottom">Submit Form</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
