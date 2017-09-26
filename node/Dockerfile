@@ -1,4 +1,4 @@
-FROM node:0.10.38
+FROM node:8.5.0
 
 RUN mkdir /src
 
